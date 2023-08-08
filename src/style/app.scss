@@ -1,102 +1,126 @@
+@import url("https://fonts.googleapis.com/css?family=Gochi+Hand");
+
+$primary-color: #2c3e50;
+$secondary-color: #3498db;
+$background-color: #ecf0f1;
+$text-color: #333;
+
 body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: #f8f9fa;
-    margin: 0;
-    padding: 0;
+  background-color: $background-color;
+  min-height: 70vh;
+  padding: 1rem;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $text-color;
+  font-family: "Gochi Hand", cursive;
+  text-align: center;
+  font-size: 130%;
+}
+
+.container {
+  width: 100%;
+  height: auto;
+  min-height: 500px;
+  max-width: 500px;
+  min-width: 250px;
+  background: $background-color;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.heading__title {
+  transform: rotate(2deg);
+  padding: 0.2rem 1.2rem;
+  border-radius: 20% 5% 20% 5%/5% 20% 25% 20%;
+  background-color: $secondary-color;
+  font-size: 1.5rem;
+  animation: flashTitle 1s infinite;
+}
+
+@keyframes flashTitle {
+  0%, 100% {
+    opacity: 1;
   }
-  
-  .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
+  50% {
+    opacity: 0;
   }
-  
-  .header {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .header h1 {
-    color: #007bff;
-  }
-  
-  .task-list {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .task-list-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 15px;
-    background-color: #ffffff;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  
-    &:hover {
-      background-color: #f0f0f0;
-    }
-  }
-  
-  .task-list-item .task-title {
-    font-weight: bold;
-  }
-  
-  .task-list-item .task-details {
-    font-size: 14px;
-    color: #6c757d;
-  }
-  
-  .add-task-form {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .add-task-form label {
-    font-weight: bold;
-  }
-  
-  .add-task-form input[type='text'] {
-    padding: 8px;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    margin-top: 5px;
-  }
-  
-  .add-task-form button {
-    background-color: #007bff;
-    color: #ffffff;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: background-color 0.3s;
-  
-    &:hover {
-      background-color: #0056b3;
-    }
-  }
-  
-  .task-details {
-    margin-top: 20px;
-  
-    h2 {
-      color: #007bff;
-      margin-bottom: 10px;
-    }
-  }
-  
-  .footer {
-    text-align: center;
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #f0f0f0;
-    border-top: 1px solid #d0d0d0;
-    font-size: 14px;
-    color: #6c757d;
-  }
-  
+}
+
+.heading__img {
+  width: 20%;
+}
+
+.form__label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.form__input {
+  box-sizing: border-box;
+  background-color: transparent;
+  padding: 0.7rem;
+  border-bottom-right-radius: 15px 3px;
+  border-bottom-left-radius: 3px 15px;
+  border: solid 3px transparent;
+  border-bottom: dashed 3px $secondary-color;
+  font-family: "Gochi Hand", cursive;
+  font-size: 1rem;
+  color: $text-color;
+  width: 70%;
+  margin-bottom: 20px;
+}
+
+.form__input:focus {
+  outline: none;
+  border: solid 3px $secondary-color;
+}
+
+.button {
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  transform: rotate(4deg);
+  transform-origin: center;
+  font-family: "Gochi Hand", cursive;
+  text-decoration: none;
+  padding-bottom: 3px;
+  border-radius: 5px;
+  box-shadow: 0 2px 0 $text-color;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  background-color: $primary-color;
+  color: white;
+}
+
+.button:hover {
+  background-color: lighten($primary-color, 15%);
+}
+
+.button:active, .button:focus {
+  transform: translateY(4px);
+  padding-bottom: 0px;
+  outline: 0;
+}
+
+.toDoList {
+  text-align: left;
+}
+
+.toDoList li {
+  position: relative;
+  padding: 0.5rem;
+}
+
+.toDoList li:hover {
+  text-decoration: line-through wavy $secondary-color;
+}
