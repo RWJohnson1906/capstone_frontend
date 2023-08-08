@@ -1,0 +1,50 @@
+.add-task-details {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    color: #215083;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .add-task-details h2 {
+    color: red;
+    margin-bottom: 10px;
+  }
+  
+  .add-task-details form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .add-task-details label {
+    font-weight: bold;
+  }
+  
+  .add-task-details input[type='text'] {
+    padding: 8px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    margin-top: 5px;
+  }
+  
+  .add-task-details button {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+  }
+  
+  .add-task-details button:hover {
+    background-color: #215083;
+  }
+  
+  .add-task-details .form-group {
+    margin-bottom: 15px;
+  }
+  
