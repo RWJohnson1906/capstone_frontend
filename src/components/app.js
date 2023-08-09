@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import CarouselComponent from './CarouselComponent';
 import '../style/app.scss';
 
 export default function App() {
@@ -146,6 +147,11 @@ export default function App() {
           </ul>
         </div>
       </section>
+      <footer className="footer">
+        <div className="footer-container">
+          <CarouselComponent />
+        </div>
+      </footer>
     </div>
   );
 }

@@ -21,7 +21,7 @@ body {
 
 .container {
   width: 100%;
-  height: auto;
+  height: 100%;
   min-height: 500px;
   max-width: 500px;
   min-width: 250px;
@@ -153,7 +153,59 @@ body {
       color: red;
       transition: 0.3s ease-in-out;
     }
-  
+  }
 
+}
+
+.footer {
+  height: 100%;
+
+
+  .footer-container {
+    .carousel {
+      position: relative;
+
+      .carousel-indicators {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 15;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-pack: center;
+        justify-content: center;
+        padding-left: 0;
+        margin-right: 15%;
+        margin-left: 15%;
+        list-style: none;
+
+      }
+      .carousel-inner {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+
+        .carousel-item {
+          position: relative;
+          display: none;
+          float: left;
+          width: 100%;
+          margin-right: -100%;
+          -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+          transition: -webkit-transform 0.6s ease-in-out;
+          transition: transform 0.6s ease-in-out;
+          transition: transform 0.6s ease-in-out, -webkit-transform 0.6s ease-in-out;
+
+          img {
+            height: 200px;
+          }
+        }
+        .active {
+          display: block;
+        }
+      }
+  }
   }
 }
