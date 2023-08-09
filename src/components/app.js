@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
-
 import '../style/app.scss';
 
 export default function App() {
@@ -14,7 +13,7 @@ export default function App() {
 
   const fetchTasks = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/get/tasks');
+      const response = await fetch('http://127.0.0.1:5000/api/get/tasks');
       const data = await response.json();
       setToDoListArray(data);
     } catch (error) {
@@ -30,7 +29,7 @@ export default function App() {
     setInputValue('');
 
     try {
-      const response = await fetch('http://localhost:5000/api/tasks', {
+      const response = await fetch('http://127.0.0.1:5000/api/tasks', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -48,7 +47,7 @@ export default function App() {
     removeItemFromArray(id);
 
     try {
-      const response = await fetch(`http://localhost:5000/api/delete/task/${id}`, {
+      const response = await fetch(`http://127.0.0.1:5000/api/delete/task/${id}`, {
         method: 'DELETE',
       });
       const data = await response.json();
@@ -60,12 +59,35 @@ export default function App() {
 
   const addItemToArray = (itemId, toDoItem) => {
     setToDoListArray([...toDoListArray, { itemId, toDoItem }]);
-    console.log(toDoListArray);
   };
 
   const removeItemFromArray = (id) => {
     setToDoListArray((prevArray) => prevArray.filter((item) => item.itemId !== id));
-    console.log(toDoListArray);
+  };
+
+  const getItemById = (id) => {
+    return toDoListArray.find((item) => item.itemId === id);
+  };
+
+  const updateItemValue = (id, newValue) => {
+    setToDoListArray((prevArray) =>
+      prevArray.map((item) =>
+        item.itemId === id ? { ...item, toDoItem: newValue } : item
+      )
+    );
+  };
+
+  const handleEditClick = (id) => {
+    const newValue = prompt('Edit ask:', getItemById(id).toDoItem);
+    if (newValue !== null) {
+      updateItemValue(id, newValue);
+    }
+  };
+
+  const handleDeleteClick = (id) => {
+    if (window.confirm('Task About to be DELETED!')) {
+      removeItemFromArray(id);
+    }
   };
 
   return (
@@ -104,14 +126,14 @@ export default function App() {
         <div>
           <ul className="toDoList">
             {toDoListArray.map((item) => (
-              <li key={item.itemId} data-id={item.itemId} onClick={() => handleItemClick(item.itemId)}>
-                {item.toDoItem}
-                <span className="icon-button">
+              <li key={item.itemId} data-id={item.itemId}>
+                <div className="list-item__content">
+                  {item.toDoItem}
+                </div>
+                <div className="list-item__icons">
                   <FontAwesomeIcon icon={faEdit} onClick={() => handleEditClick(item.itemId)} />
-                </span>
-                <span className="icon-button">
                   <FontAwesomeIcon icon={faTrash} onClick={() => handleDeleteClick(item.itemId)} />
-                </span>
+                </div>
               </li>
             ))}
           </ul>

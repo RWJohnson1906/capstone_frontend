@@ -103,7 +103,8 @@ body {
 }
 
 .button:hover {
-  background-color: lighten($primary-color, 15%);
+  background-color: lighten(rgb(37, 239, 185), 15%);
+  transition: 0.3s ease-in-out;
 }
 
 .button:active, .button:focus {
@@ -118,11 +119,11 @@ body {
 
 .toDoList li {
   position: relative;
-  padding: 1rem; /* Adjust the padding to make the list items larger */
-  background-color: white; /* Add background color to the list items */
-  margin-bottom: 10px; /* Add margin to separate the list items */
-  border-radius: 10px; /* Add rounded corners to the list items */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  padding: 1rem; 
+  background-color: white; 
+  margin-bottom: 10px; 
+  border-radius: 10px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -130,11 +131,17 @@ body {
 }
 
 .toDoList li:hover {
-  text-decoration: line-through wavy $secondary-color;
+  text-decoration: line-through red;
 }
 
 .list-item__icons {
   display: flex;
   gap: 10px;
-  color: $primary-color;
+  color: $secondary-color;
+
+  &:hover {
+    cursor: pointer;
+    color: red;
+    transition: 0.3s ease-in-out;
+  }
 }
