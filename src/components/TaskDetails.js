@@ -14,10 +14,9 @@ const TaskDetails = () => {
         <div>
           <h2>Task Details</h2>
           <p>Title: {task.title}</p>
-          {/* Add more task details */}
         </div>
       ) : (
-        <p>Task not found.</p>
+        <p>Task Not Found!</p>
       )}
     </div>
   );

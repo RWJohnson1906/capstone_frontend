@@ -10,17 +10,17 @@ function App() {
     <Router>
       <div className="container">
         <div className="header">
-          <h1>Task Management App</h1>
+          <h1>To-Do List</h1>
         </div>
         
         <Switch>
           <Route exact path="/" component={ToDoList} />
           <Route path="/details/:id" component={TaskDetails} />
-          <Route path="/add" component={AddTask} /> {/* Add this line for the AddTask component */}
+          <Route path="/add" component={AddTask} /> 
         </Switch>
         
         <div className="footer">
-          &copy; {new Date().getFullYear()} Task Management App
+          <p>Capstone ToDo List Project</p>
         </div>
       </div>
     </Router>
