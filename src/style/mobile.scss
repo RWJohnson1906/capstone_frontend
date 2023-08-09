@@ -1,0 +1,22 @@
+@import "app.scss";
+
+.toDoList {
+  margin-bottom: 0;
+}
+
+.toDoList li {
+  padding: 0.8rem;
+  border-radius: 0;
+}
+
+.list-item__icons {
+  display: none;
+}
+
+.footer {
+  height: auto;
+
+  .footer-container {
+    padding: 1rem;
+  }
+}

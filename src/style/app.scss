@@ -5,6 +5,61 @@ $secondary-color: #3498db;
 $background-color: #ecf0f1;
 $text-color: #333;
 
+/* Mobile styles */
+@media (max-width: 768px) {
+  body {
+    font-size: 90%;
+  }
+
+  .container {
+    width: 100%;
+    min-height: 300px;
+    max-width: none;
+  }
+
+  .heading {
+    margin-bottom: 0;
+  }
+
+  .heading__title {
+    font-size: 1.2rem;
+  }
+
+  .form__label {
+    margin-bottom: 0.2rem;
+  }
+
+  .form__input {
+    width: 90%;
+  }
+
+  .button {
+    font-size: 0.9rem;
+  }
+
+  /* Mobile specific styles */
+  .toDoList {
+    margin-bottom: 0;
+  }
+
+  .toDoList li {
+    padding: 0.8rem;
+    border-radius: 0;
+  }
+
+  .list-item__icons {
+    display: none;
+  }
+
+  .footer {
+    height: auto;
+
+    .footer-container {
+      padding: 1rem;
+    }
+  }
+}
+
 body {
   background-color: $background-color;
   min-height: 70vh;
