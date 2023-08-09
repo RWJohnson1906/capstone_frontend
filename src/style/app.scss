@@ -139,9 +139,21 @@ body {
   gap: 10px;
   color: $secondary-color;
 
-  &:hover {
-    cursor: pointer;
-    color: red;
-    transition: 0.3s ease-in-out;
+  .edit-icon {
+    &:hover {
+      cursor: pointer;
+      color: rgb(14, 13, 13);
+      transition: 0.3s ease-in-out;
+    }
+  }
+
+  .delete-icon {
+    &:hover {
+      cursor: pointer;
+      color: red;
+      transition: 0.3s ease-in-out;
+    }
+  
+
   }
 }

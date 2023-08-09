@@ -131,8 +131,15 @@ export default function App() {
                   {item.toDoItem}
                 </div>
                 <div className="list-item__icons">
-                  <FontAwesomeIcon icon={faEdit} onClick={() => handleEditClick(item.itemId)} />
-                  <FontAwesomeIcon icon={faTrash} onClick={() => handleDeleteClick(item.itemId)} />
+
+                  <div className="edit-icon">
+                    <FontAwesomeIcon icon={faEdit} onClick={() => handleEditClick(item.itemId)} />
+                  </div>
+
+                  <div className="delete-icon">
+                    <FontAwesomeIcon icon={faTrash} onClick={() => handleDeleteClick(item.itemId)} />
+                  </div>
+
                 </div>
               </li>
             ))}
