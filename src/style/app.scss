@@ -118,9 +118,23 @@ body {
 
 .toDoList li {
   position: relative;
-  padding: 0.5rem;
+  padding: 1rem; /* Adjust the padding to make the list items larger */
+  background-color: white; /* Add background color to the list items */
+  margin-bottom: 10px; /* Add margin to separate the list items */
+  border-radius: 10px; /* Add rounded corners to the list items */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 700;
 }
 
 .toDoList li:hover {
   text-decoration: line-through wavy $secondary-color;
+}
+
+.list-item__icons {
+  display: flex;
+  gap: 10px;
+  color: $primary-color;
 }

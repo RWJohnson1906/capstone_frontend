@@ -1,20 +1,61 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+
 import '../style/app.scss';
 
 export default function App() {
   const [toDoListArray, setToDoListArray] = useState([]);
   const [inputValue, setInputValue] = useState('');
 
-  const handleFormSubmit = (e) => {
+  useEffect(() => {
+    fetchTasks();
+  }, []);
+
+  const fetchTasks = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/get/tasks');
+      const data = await response.json();
+      setToDoListArray(data);
+    } catch (error) {
+      console.error('Error fetching tasks:', error);
+    }
+  };
+
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
     const itemId = String(Date.now());
     const toDoItem = inputValue;
     addItemToArray(itemId, toDoItem);
     setInputValue('');
+
+    try {
+      const response = await fetch('http://localhost:5000/api/tasks', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ title: toDoItem }),
+      });
+      const data = await response.json();
+      console.log('Added task:', data);
+    } catch (error) {
+      console.error('Error adding task:', error);
+    }
   };
 
-  const handleItemClick = (id) => {
+  const handleItemClick = async (id) => {
     removeItemFromArray(id);
+
+    try {
+      const response = await fetch(`http://localhost:5000/api/delete/task/${id}`, {
+        method: 'DELETE',
+      });
+      const data = await response.json();
+      console.log('Deleted task:', data);
+    } catch (error) {
+      console.error('Error deleting task:', error);
+    }
   };
 
   const addItemToArray = (itemId, toDoItem) => {
@@ -32,12 +73,18 @@ export default function App() {
       <h1>Done Is Better Than "Perfect"</h1>
       <section className="container">
         <div className="heading">
-          <img className="heading__img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/756881/laptop.svg" alt="Laptop" />
+          <img
+            className="heading__img"
+            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/756881/laptop.svg"
+            alt="Laptop"
+          />
           <h1 className="heading__title">To-Do</h1>
         </div>
         <form className="form" onSubmit={handleFormSubmit}>
           <div>
-            <label className="form__label" htmlFor="todo">~ Things To Make Happen ~</label>
+            <label className="form__label" htmlFor="todo">
+              ~ Things To Make Happen ~
+            </label>
             <input
               className="form__input"
               type="text"
@@ -49,7 +96,9 @@ export default function App() {
               onChange={(e) => setInputValue(e.target.value)}
               required
             />
-            <button className="button"><span>Submit</span></button>
+            <button className="button">
+              <span>Submit</span>
+            </button>
           </div>
         </form>
         <div>
@@ -57,6 +106,12 @@ export default function App() {
             {toDoListArray.map((item) => (
               <li key={item.itemId} data-id={item.itemId} onClick={() => handleItemClick(item.itemId)}>
                 {item.toDoItem}
+                <span className="icon-button">
+                  <FontAwesomeIcon icon={faEdit} onClick={() => handleEditClick(item.itemId)} />
+                </span>
+                <span className="icon-button">
+                  <FontAwesomeIcon icon={faTrash} onClick={() => handleDeleteClick(item.itemId)} />
+                </span>
               </li>
             ))}
           </ul>
