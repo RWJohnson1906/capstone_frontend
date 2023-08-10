@@ -14,7 +14,7 @@ export default function App() {
 
   const fetchTasks = async () => {
     try {
-      const response = await fetch('http://127.0.0.1:5000/api/get/tasks');
+      const response = await fetch('https://rwj-to-do-list-5f4780d04441.herokuapp.com//api/get/tasks');
       const data = await response.json();
       setToDoListArray(data);
     } catch (error) {
@@ -30,7 +30,7 @@ export default function App() {
     setInputValue('');
 
     try {
-      const response = await fetch('http://127.0.0.1:5000/api/tasks', {
+      const response = await fetch('https://rwj-to-do-list-5f4780d04441.herokuapp.com//api/tasks', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -48,7 +48,7 @@ export default function App() {
     removeItemFromArray(id);
 
     try {
-      const response = await fetch(`http://127.0.0.1:5000/api/delete/task/${id}`, {
+      const response = await fetch(`https://rwj-to-do-list-5f4780d04441.herokuapp.com//api/delete/task/${id}`, {
         method: 'DELETE',
       });
       const data = await response.json();

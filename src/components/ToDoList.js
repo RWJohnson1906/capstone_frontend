@@ -15,7 +15,7 @@ export default class ToDoList extends Component {
 
   fetchTasks = async () => {
     try {
-      const response = await fetch('http://127.0.0.1:5000/api/get/tasks');
+      const response = await fetch('https://rwj-to-do-list-5f4780d04441.herokuapp.com/api/get/tasks');
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
