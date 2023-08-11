@@ -101,12 +101,12 @@ export default function App() {
             src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/756881/laptop.svg"
             alt="Laptop"
           />
-          <h1 className="heading__title">To-Do</h1>
+          <h1 className="heading__title">To-Do List</h1>
         </div>
         <form className="form" onSubmit={handleFormSubmit}>
           <div>
             <label className="form__label" htmlFor="todo">
-              ~ Things To Make Happen ~
+              ~ Things To Make Happen Today ~
             </label>
             <input
               className="form__input"
